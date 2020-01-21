@@ -34,7 +34,9 @@ public class TencentAPIUtil {
         requestMap.put("Nonce", Integer.toString((int) (Math.random() * 10000)));
         requestMap.put("SecretId", secretId);
         requestMap.put("domain", domain);
-        String json = NetUtil.NetRequest(getUrl(requestMap));
+        String url = getUrl(requestMap);
+        log.info("查询列表 {}", url);
+        String json = NetUtil.NetRequest(url);
         JSONObject userJson = JSONObject.parseObject(json);
         RecordListBean recordListBean = JSON.toJavaObject(userJson, RecordListBean.class);
         return recordListBean.getData().getRecords();
@@ -54,6 +56,7 @@ public class TencentAPIUtil {
         requestMap.put("value", records.getValue());
         requestMap.put("ttl", Integer.toString(records.getTtl()));
         String url = getUrl(requestMap);
+        log.info("发起修改请求 {}", url);
         String json = NetUtil.NetRequest(url);
         JSONObject userJson = JSONObject.parseObject(json);
         log.info("修改解析值返回结果 " + json);
@@ -90,8 +93,8 @@ public class TencentAPIUtil {
     private String getUrl(Map<String, String> requestMap) {
         String url = NetUtil.formatUrlParam(requestMap, "UTF-8", false, false);
         url = "GET" + proUrl + url;
-        String Signature = HMAC_SHA1Util.genHMAC(url, secretKey);
-        requestMap.put("Signature", Signature);
+        String signature = HMAC_SHA1Util.genHMAC(url, secretKey);
+        requestMap.put("Signature", signature);
         return "https://" + proUrl + NetUtil.formatUrlParam(requestMap, "UTF-8", false, true);
     }
 }
