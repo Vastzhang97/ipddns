@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import per.vastzhang.piddns.util.IPUtil;
 import per.vastzhang.piddns.util.TencentAPIUtil;
+import per.vastzhang.piddns.util.WeChatMessageUtil;
 
 import java.text.SimpleDateFormat;
 
@@ -24,6 +25,8 @@ public class PiDDNSApplication implements ApplicationRunner {
     String taobaoAPI;
     @Autowired
     private TencentAPIUtil tencentAPIUtil;
+    @Autowired
+    private WeChatMessageUtil weChatMessageUtil;
 
     public static void main(String[] args) {
         SpringApplication.run(PiDDNSApplication.class, args);
@@ -67,6 +70,7 @@ public class PiDDNSApplication implements ApplicationRunner {
                 try {
                     tencentAPIUtil.alterPiIP(ip);
                     log.info("修改解析值成功");
+                    weChatMessageUtil.send("解析ip地址成功", "* 原ip为: " + oldIp + "\n\n* 新ip为: " + ip);
                 } catch (Exception e) {
                     log.error("修改解析值异常", e);
                 }

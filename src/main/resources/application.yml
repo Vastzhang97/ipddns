@@ -1,16 +1,3 @@
-api:
-  tencent:
-    secretId: *
-    secretKey: *
-    domain: *
-    proUrl: *
-
-  nowAPI:
-    APPKEY: *
-    SIGN: *
-    request: *
-
-  tianqiAPI:
-    request: *
-  taobaoAPI:
-    request: *
+spring:
+  profiles:
+    active: dev

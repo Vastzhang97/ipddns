@@ -1,0 +1,23 @@
+api:
+  tencent:
+    secretId: *
+    secretKey: *
+    domain: *
+    proUrl: cns.api.qcloud.com/v2/index.php?
+
+  nowAPI:
+    APPKEY: *
+    SIGN: *
+    request: https://sapi.k780.com/?app=ip.local&appkey=${api.nowAPI.APPKEY}&sign=${api.nowAPI.SIGN}&format=json
+
+  tianqiAPI:
+    request: https://ip.tianqiapi.com/
+  taobaoAPI:
+    request: http://ip.taobao.com/service/getIpInfo.php?ip=myip
+
+  ftqq:
+    url: https://sc.ftqq.com/
+    sckey: *
+
+log:
+  path: G:/Code/IntelliJ_workspace/piddns1/log/%d{yyyy-MM-dd}.%i.log

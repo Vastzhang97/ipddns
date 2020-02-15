@@ -1,5 +1,6 @@
 package per.vastzhang.piddns.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
  * 需要apache.commons.codec包
  *
  */
+@Slf4j
 @Component
 public class HMAC_SHA1Util {
 
@@ -41,7 +43,7 @@ public class HMAC_SHA1Util {
             byte[] rawHmac = mac.doFinal(data.getBytes());
             result = Base64.encodeBase64(rawHmac);
         } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-            System.err.println(e.getMessage());
+            log.error(e.getMessage());
         }
         if (null != result) {
             return new String(result);
