@@ -10,9 +10,9 @@ import java.util.Map;
 public class WeChatMessageUtil {
 
     @Value("${api.ftqq.url}")
-    String FtqqUrl;
+    String ftqqUrl;
     @Value("${api.ftqq.sckey}")
-    String FtqqSCKEY;
+    String ftqqSCKEY;
 
     public void send(String text, String desp) throws Exception {
         Map<String, String> requestMap = new HashMap<>();
@@ -22,6 +22,6 @@ public class WeChatMessageUtil {
     }
 
     private String getUrl(Map<String, String> requestMap) {
-        return FtqqUrl + FtqqSCKEY + ".send?" + NetUtil.formatUrlParam(requestMap, "UTF-8", false, true);
+        return ftqqUrl + ftqqSCKEY + ".send?" + NetUtil.formatUrlParam(requestMap, "UTF-8", false, true);
     }
 }

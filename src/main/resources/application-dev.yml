@@ -1,23 +1,21 @@
 api:
   tencent:
-    secretId: *
-    secretKey: *
-    domain: *
+    secretId: * #需要填写
+    secretKey: * #需要填写
+    domain: * #需要填写
     proUrl: cns.api.qcloud.com/v2/index.php?
 
   nowAPI:
-    APPKEY: *
-    SIGN: *
+    APPKEY: * #需要填写
+    SIGN: * #需要填写
     request: https://sapi.k780.com/?app=ip.local&appkey=${api.nowAPI.APPKEY}&sign=${api.nowAPI.SIGN}&format=json
 
-  tianqiAPI:
-    request: https://ip.tianqiapi.com/
-  taobaoAPI:
-    request: http://ip.taobao.com/service/getIpInfo.php?ip=myip
-
   ftqq:
-    url: https://sc.ftqq.com/
-    sckey: *
+    active: false
+    url: https://sctapi.ftqq.com/
+    sckey: * #使用微信推送，则需要填写
+
+  preUrl: * #需要绑定的子域名
 
 log:
-  path: G:/Code/IntelliJ_workspace/piddns1/log/%d{yyyy-MM-dd}.%i.log
+  path: ./%d{yyyy-MM-dd}.%i.log #可自定义日志路径

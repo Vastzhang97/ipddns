@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-public class TencentAPIUtil {
+public class TencentApiUtil {
     @Value("${api.tencent.secretId}")
     private String secretId;
     @Value("${api.tencent.secretKey}")
@@ -26,6 +26,8 @@ public class TencentAPIUtil {
     private String domain;
     @Value("${api.tencent.proUrl}")
     private String proUrl;
+    @Value("${api.preUrl}")
+    private String preUrl;
 
     public List<Records> getRecordList() throws Exception {
         Map<String, String> requestMap = new HashMap<>();
@@ -68,7 +70,7 @@ public class TencentAPIUtil {
         List<Records> list = getRecordList();
         Records piRecords = new Records();
         for (Records records : list) {
-            if (records.getName().equals("pi")) {
+            if (records.getName().equals(preUrl)) {
                 piRecords = records;
                 break;
             }

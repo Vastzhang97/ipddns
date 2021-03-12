@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>per.vastzhang</groupId>
-    <artifactId>piddns</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>ipddns</artifactId>
+    <version>1.0.0</version>
     <name>piddns</name>
     <description>Demo project for Spring Boot</description>
 
